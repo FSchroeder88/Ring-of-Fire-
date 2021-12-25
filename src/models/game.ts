@@ -3,6 +3,8 @@ export class Game {
     public stack: string[] = [];
     public playedCards: string[] = [];
     public currentPlayer: number = 0;
+    public maxPlayer: number = 0;
+    public playCards: number = 0;
 
     constructor() {
         for (let i = 1; i < 14; i++) {

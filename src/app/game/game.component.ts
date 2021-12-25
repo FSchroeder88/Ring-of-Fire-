@@ -33,23 +33,27 @@ export class GameComponent implements OnInit {
 
   takeCard() {
 
-    if (!this.pickCardAnimation) {
+    if (!this.pickCardAnimation && this.game.playCards <= 51 && this.game.maxPlayer >= 1) {
       this.AUDIO_CARD.play();
       this.currentCard = this.game.stack.pop();
       this.pickCardAnimation = true;
+      this.game.playCards++;
       console.log('New card:' + this.currentCard);
       console.log('Game is', this.game);
 
       setTimeout(() => {
         this.game.currentPlayer++;
         this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
-      }, 1400);
+      }, 200);
      
 
       setTimeout(() => {
         this.game.playedCards.push(this.currentCard);
         this.pickCardAnimation = false;
-      }, 1800);
+      }, 200);
+
+    } else {
+      this.newGame();
     }
 
   }
@@ -61,6 +65,7 @@ export class GameComponent implements OnInit {
     dialogRef.afterClosed().subscribe(name => {
       if (name && name.length > 0) {
         this.game.players.push(name);
+        this.game.maxPlayer++;
       }
     });
   }
