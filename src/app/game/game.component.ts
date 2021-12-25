@@ -15,6 +15,7 @@ export class GameComponent implements OnInit {
   pickCardAnimation = false;
   currentCard: string = '';
   game: Game;
+  AUDIO_CARD = new Audio('assets/audio/card-sound.mp3');
 
   constructor(public firestore: AngularFirestore,public dialog: MatDialog) { }
 
@@ -31,22 +32,28 @@ export class GameComponent implements OnInit {
   }
 
   takeCard() {
+
     if (!this.pickCardAnimation) {
+      this.AUDIO_CARD.play();
       this.currentCard = this.game.stack.pop();
       this.pickCardAnimation = true;
       console.log('New card:' + this.currentCard);
       console.log('Game is', this.game);
 
-      this.game.currentPlayer++;
-      this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
+      setTimeout(() => {
+        this.game.currentPlayer++;
+        this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
+      }, 1400);
+     
 
       setTimeout(() => {
         this.game.playedCards.push(this.currentCard);
         this.pickCardAnimation = false;
-      }, 1800);
+      }, 200);
     }
 
   }
+
 
   openDialog(): void {
     const dialogRef = this.dialog.open(DialogAddPlayerComponent);
