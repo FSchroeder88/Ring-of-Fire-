@@ -1,0 +1,27 @@
+.start-screen {
+    background-color: #211e1e;
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+        height: 100vh;
+        width: 80vw;
+    }
+
+    .startButton {
+        z-index: 1;
+        height: 240px;
+        width: 520px;
+        position: absolute;
+        top: 600px;
+
+        &:hover {
+            filter: brightness(1.3);
+            cursor: pointer;
+        }
+    }
+}

@@ -1,0 +1,28 @@
+.player {
+    width: 300px;
+    display: flex;
+    align-items: center;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+
+    span {
+       
+        font-size: 32px;
+        margin-left: 16px;
+    }
+
+    background-color: #b4b4bd;
+    img {
+        width: 50px;
+        height: 50px;
+        object-fit: top;
+        border-radius: 100%;
+        filter: brightness(0.6);
+    }
+}
+
+.active-player {
+    border-style: groove !important;
+    border-color: rgb(201, 52, 52) !important;
+    filter: brightness(1.4);
+}
