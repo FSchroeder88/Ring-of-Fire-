@@ -49,7 +49,7 @@ export class GameComponent implements OnInit {
       setTimeout(() => {
         this.game.playedCards.push(this.currentCard);
         this.pickCardAnimation = false;
-      }, 200);
+      }, 1800);
     }
 
   }
