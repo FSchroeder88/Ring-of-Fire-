@@ -44,13 +44,13 @@ export class GameComponent implements OnInit {
       setTimeout(() => {
         this.game.currentPlayer++;
         this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
-      }, 200);
+      }, 1400);
      
 
       setTimeout(() => {
         this.game.playedCards.push(this.currentCard);
         this.pickCardAnimation = false;
-      }, 200);
+      }, 1500);
 
     } else {
       this.newGame();
