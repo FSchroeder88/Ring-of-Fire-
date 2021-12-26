@@ -2,15 +2,26 @@
     width: 100vw;
     height: 100vh;
     max-width: 100%;
-    background-image: url("/assets/imgs/empty-green-chalkboard-school-board-background-texture-education-back-school-concept_26018-715.jpg");
+    //background-image: url("/assets/imgs/background.jpg");
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
+    
+}
+
+.background {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100%;
+    
 }
 
 .card-stack {
-    position: relative;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 
     img {
         position: absolute;
