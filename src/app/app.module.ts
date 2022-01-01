@@ -26,6 +26,8 @@ import { provideMessaging,getMessaging } from '@angular/fire/messaging';
 import { providePerformance,getPerformance } from '@angular/fire/performance';
 import { provideRemoteConfig,getRemoteConfig } from '@angular/fire/remote-config';
 import { provideStorage,getStorage } from '@angular/fire/storage';
+import { AppPlayerMobileComponent } from './app-player-mobile/app-player-mobile.component';
+import { EditPlayerComponent } from './edit-player/edit-player.component';
 
 
 @NgModule({
@@ -35,7 +37,9 @@ import { provideStorage,getStorage } from '@angular/fire/storage';
     GameComponent,
     PlayerComponent,
     DialogAddPlayerComponent,
-    PlayerInfoComponent
+    PlayerInfoComponent,
+    AppPlayerMobileComponent,
+    EditPlayerComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
