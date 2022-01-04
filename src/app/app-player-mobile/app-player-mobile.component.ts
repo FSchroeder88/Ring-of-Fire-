@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class AppPlayerMobileComponent implements OnInit {
 
   @Input() name;
+  @Input() images =  '1.webp';
   @Input() activePlayer: boolean = false;
 
   constructor() { }

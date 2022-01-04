@@ -1,5 +1,6 @@
 export class Game {
     public players: string[] = [];
+    public players_images: string[] = [];
     public stack: string[] = [];
     public playedCards: string[] = [];
     public currentPlayer: number = 0;
@@ -24,6 +25,7 @@ export class Game {
         return {
             currentPlayer: this.currentPlayer,
             playedCards: this.playedCards,
+            players_images: this.players_images,
             players: this.players,
             stack: this.stack,
             maxPlayer: this.maxPlayer,

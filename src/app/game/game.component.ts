@@ -18,7 +18,7 @@ export class GameComponent implements OnInit {
   gameId: string;
 
   constructor(private route: ActivatedRoute, private firestore: AngularFirestore,   // einbinden in firestore (Datenbank)
-    public dialog: MatDialog) { }      
+    public dialog: MatDialog) { }
 
 
   ngOnInit(): void {
@@ -37,10 +37,10 @@ export class GameComponent implements OnInit {
           this.game.currentPlayer = game.currentPlayer;
           this.game.playedCards = game.playedCards;
           this.game.players = game.players;
+          this.game.players_images = game.players_images;
           this.game.stack = game.stack;
           this.game.maxPlayer = game.maxPlayer;
           this.game.playCards = game.playCards;
-          
           this.game.pickCardAnimation = game.pickCardAnimation;
           this.game.currentCard = game.currentCard;
 
@@ -65,14 +65,14 @@ export class GameComponent implements OnInit {
       this.game.playCards++;
       console.log('New card:' + this.game.currentCard);
       console.log('Game is', this.game);
-      
+
 
       setTimeout(() => {
         this.game.currentPlayer++;
         this.game.currentPlayer = this.game.currentPlayer % this.game.players.length;
         this.saveGame();
       }, 1400);
-      
+
 
       setTimeout(() => {
         this.game.playedCards.push(this.game.currentCard);
@@ -88,10 +88,20 @@ export class GameComponent implements OnInit {
 
   editPlayer(playerId: number) {
     console.log('Edit player', playerId);
-    
+
     const dialogRef = this.dialog.open(EditPlayerComponent);
     dialogRef.afterClosed().subscribe((change: string) => {
-      console.log('Received change', change);
+      if (change) {
+        if (change == 'DELETE') {
+          this.game.players.splice(playerId,1);
+          this.game.players_images.splice(playerId,1);
+        }
+          else {
+            console.log('Received change', change);
+            this.game.players_images[playerId] = change;
+          }
+        this.saveGame();
+      }
     });
   }
 
@@ -102,17 +112,18 @@ export class GameComponent implements OnInit {
     dialogRef.afterClosed().subscribe(name => {
       if (name && name.length > 0) {
         this.game.players.push(name);
+        this.game.players_images.push('1.webp');
         this.game.maxPlayer++;
         this.saveGame();
       }
     });
   }
 
-  saveGame(){
+  saveGame() {
     this
-    .firestore
-    .collection('games')
-    .doc(this.gameId)
-    .update(this.game.toJson());
+      .firestore
+      .collection('games')
+      .doc(this.gameId)
+      .update(this.game.toJson());
   }
 }
