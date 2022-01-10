@@ -21,9 +21,9 @@
     .startButton {
         z-index: 1;
         height: 240px;
-        width: 520px;
+        max-width: 520px;
         position: absolute;
-        top: 600px;
+        bottom: 0px;
 
         &:hover {
             filter: brightness(1.3);

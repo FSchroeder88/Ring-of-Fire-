@@ -81,6 +81,7 @@ export class GameComponent implements OnInit {
       }, 1500);
 
     } else {
+      alert("Please choose at least two names!")
       this.newGame();
     }
 
